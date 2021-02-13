@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LocalizaLab.Operacoes.Domain\LocalizaLab.Operacoes.Domain.csproj" />
+    <ProjectReference Include="..\LocalizaLab.Operacoes.Identity\LocalizaLab.Operacoes.Identity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Command\Contratos\" />
+    <Folder Include="Queries\Query\" />
+  </ItemGroup>
+
+</Project>
