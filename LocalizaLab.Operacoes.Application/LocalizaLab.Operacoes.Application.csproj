@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Command\Contratos\" />
     <Folder Include="Queries\Query\" />
   </ItemGroup>
 

@@ -54,7 +54,7 @@ namespace LocalizaLab.Operacoes.API.Controllers
 
         }
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}/Consultar")]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -97,7 +97,7 @@ namespace LocalizaLab.Operacoes.API.Controllers
 
         }
         [HttpDelete]
-        [Route("Deletar/{id}")]
+        [Route("{id}/Deletar")]
         public async Task<IActionResult> DeletarVeiculoAsync([FromRoute] Guid id)
         {
             var result = await _commandDeletar.Handle(new DeletarVeiculoCommand() {Id = id }).ConfigureAwait(true) as CommandResult;
@@ -112,7 +112,7 @@ namespace LocalizaLab.Operacoes.API.Controllers
             }
         }
         [HttpPut]
-        [Route("Atualizar/{id}")]
+        [Route("{id}/Atualizar")]
         public async Task<IActionResult> EditarVeiculoAsync([FromRoute] Guid id, EditarVeiculoCommand command)
         {
             command.Id = id;

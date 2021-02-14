@@ -48,7 +48,7 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
             }
         }
         [HttpDelete]
-        [Route("Deletar/{id}")]
+        [Route("{id}/Deletar")]
         [Authorize(Roles = "Cliente")]
         public async Task<IActionResult> DeletarModeloAsync([FromRoute] Guid id)
         {

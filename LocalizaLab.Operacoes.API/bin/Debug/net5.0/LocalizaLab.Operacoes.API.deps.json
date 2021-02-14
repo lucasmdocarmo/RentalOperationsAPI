@@ -1622,6 +1622,7 @@
         "dependencies": {
           "AutoMapper": "10.1.1",
           "Flunt": "1.0.5",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.EntityFrameworkCore.Abstractions": "5.0.3"
         },
         "runtime": {

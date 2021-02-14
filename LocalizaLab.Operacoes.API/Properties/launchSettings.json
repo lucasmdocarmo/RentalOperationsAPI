@@ -9,6 +9,7 @@
   },
   "profiles": {
     "IIS Express": {
+      "launchUrl": "swagger",
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
@@ -17,6 +18,7 @@
     },
     "LocalizaLab.Operacoes.API": {
       "commandName": "Project",
+      "launchUrl": "swagger",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -26,8 +28,9 @@
     },
     "Docker": {
       "commandName": "Docker",
+
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": true,
       "useSSL": true
     }

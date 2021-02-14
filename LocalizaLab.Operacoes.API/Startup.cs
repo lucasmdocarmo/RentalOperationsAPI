@@ -2,6 +2,7 @@ using LocalizaLab.Operacoes.API.Extensions;
 using LocalizaLab.Operacoes.Application.Command;
 using LocalizaLab.Operacoes.Application.Command.Autenticacao;
 using LocalizaLab.Operacoes.Application.Command.Carros;
+using LocalizaLab.Operacoes.Application.Command.Contratos;
 using LocalizaLab.Operacoes.Application.Command.Marca;
 using LocalizaLab.Operacoes.Application.Command.Modelos;
 using LocalizaLab.Operacoes.Application.Command.Reservas;
@@ -12,6 +13,7 @@ using LocalizaLab.Operacoes.Application.Queries;
 using LocalizaLab.Operacoes.Application.Queries.Base;
 using LocalizaLab.Operacoes.Application.Queries.Models;
 using LocalizaLab.Operacoes.Application.Queries.Query;
+using LocalizaLab.Operacoes.Application.Queries.Reservas;
 using LocalizaLab.Operacoes.Application.Queries.Veiculos;
 using LocalizaLab.Operacoes.Domain.Command;
 using LocalizaLab.Operacoes.Domain.Command.Handlers;
@@ -105,15 +107,17 @@ namespace LocalizaLab.Operacoes.API
             services.AddScoped<ICommandHandler<DeletarVeiculoCommand>, CarrosHandler>();
             services.AddScoped<ICommandHandler<EditarVeiculoCommand>, CarrosHandler>();
             services.AddScoped<ICommandHandler<SimularReservaCommand>, ReservaHandler>();
+            services.AddScoped<ICommandHandler<CadastrarContratoCommand>, ContratoHandler>();
+            services.AddScoped<ICommandHandler<AgendarReservaCommand>, ReservaHandler>();
+            services.AddScoped<ICommandHandler<CadastrarReservaCommand>, ReservaHandler>();
+            services.AddScoped<ICommandHandler<DeletarReservaCommand>, ReservaHandler>();
 
             //Queries
             services.AddScoped<IQueryResult, QueryResult>();
             services.AddScoped<IQueryHandler<UsuarioQuery>, UsuarioQueries>();
             services.AddScoped<IQueryHandler<VeiculoQuery>, VeiculoQueries>();
             services.AddScoped<IQueryHandler<TodosVeiculosQuery>, VeiculoQueries>();
-
-            //Presenter
-            services.AddScoped<IBusinessErrorPort, BasePresenter>();
+            services.AddScoped<IQueryHandler<ConsultarReservaQuery>, ReservaQueries>();
 
             //Repos
             services.AddScoped<IVeiculoRepository, VeiculoRepository>();

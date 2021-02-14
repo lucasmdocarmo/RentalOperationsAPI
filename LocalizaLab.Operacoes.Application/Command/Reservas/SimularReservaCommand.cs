@@ -17,6 +17,8 @@ namespace LocalizaLab.Operacoes.Application.Command.Reservas
         public int Diarias { get; set; }
         public decimal ValorSimulado { get; set; }
         public decimal ValorAdicionarGrupo { get; set; }
+        public Guid ClienteId { get; set; }
+        public Guid VeiculosId { get; set; }
 
         public bool Validate()
         {

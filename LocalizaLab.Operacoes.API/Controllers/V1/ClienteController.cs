@@ -28,7 +28,6 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
         [HttpPost]
         [Route("Cadastrar")]
         [AllowAnonymous]
-        //[Authorize(Roles = "Cliente")]
         public async Task<IActionResult> CriarClienteAsync(CadastrarClienteCommand command)
         {
             var result = await _commandCadastrarCliente.Handle(command).ConfigureAwait(true) as CommandResult;
@@ -42,9 +41,6 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
                 return UnprocessableEntity();
             }
         }
-
-        
-
        
     }
 }
