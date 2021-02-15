@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using LocalizaLab.Operacoes.Domain.Entities.Contratos;
 using LocalizaLab.Operacoes.Domain.Entities.Usuarios;
+using LocalizaLab.Operacoes.Domain.Entities.Carros;
 
 namespace LocalizaLab.Operacoes.Domain.Entities.Clientes
 {
@@ -33,5 +34,6 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Clientes
         public IReadOnlyCollection<Reserva> Reservas { get; set; }
         public Endereco Endereco { get; set; }
         public Usuario Usuario { get; set; }
+        public IReadOnlyCollection<Agendamento> Agendamentos { get; set; }
     }
 }

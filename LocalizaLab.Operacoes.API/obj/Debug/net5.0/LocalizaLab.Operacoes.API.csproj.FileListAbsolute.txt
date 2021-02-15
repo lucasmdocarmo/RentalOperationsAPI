@@ -218,3 +218,10 @@ C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\obj\Debug\net5.0\ref\LocalizaLab.Operacoes.API.dll
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\obj\Debug\net5.0\LocalizaLab.Operacoes.API.pdb
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\obj\Debug\net5.0\LocalizaLab.Operacoes.API.genruntimeconfig.cache
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Syncfusion.Compression.Portable.dll
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Syncfusion.Licensing.dll
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.API\bin\Debug\net5.0\Syncfusion.Pdf.Portable.dll

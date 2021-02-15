@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace LocalizaLab.Operacoes.Application.Queries
 {
-    public class UsuarioQueries: Notifiable, IQueryHandler<UsuarioQuery>
+    public class UsuarioQueries : Notifiable, IQueryHandler<UsuarioQuery>
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IClienteRepository _clienteRepository;
@@ -36,7 +36,7 @@ namespace LocalizaLab.Operacoes.Application.Queries
 
             var usuario = await _usuarioRepository.GetUsuarioByLogin(command.Login);
 
-            if(usuario != null)
+            if (usuario != null)
             {
                 var cliente = await _clienteRepository.GetClienteByCPF(usuario.Login).ConfigureAwait(true);
 
@@ -44,14 +44,17 @@ namespace LocalizaLab.Operacoes.Application.Queries
 
                 return new QueryResult(true, resultado);
             }
-            else 
-            {
-                var operador = await _operadorRepository.GetOperadorByCPF(command.Login);
-                queryResult.Result = operador;
 
-                return new QueryResult(true, operador);
+            var operador = await _operadorRepository.GetOperadorByCPF(command.Login);
+
+            if(operador == null)
+            {
+                AddNotification("Usuario/Operador", "Usuario e/ou Operador informados Nao Encontrado.");
+                return new QueryResult(false, base.Notifications);
             }
-           
+            queryResult.Result = operador;
+
+            return new QueryResult(true, operador);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LocalizaLab.Operacoes.Domain.Entities;
+using LocalizaLab.Operacoes.Domain.Entities.Carros;
 using LocalizaLab.Operacoes.Domain.Entities.Clientes;
 using LocalizaLab.Operacoes.Domain.Entities.Contratos;
 using LocalizaLab.Operacoes.Domain.Entities.Usuarios;
@@ -17,23 +18,11 @@ namespace LocalizaLab.Operacoes.Infra.Context
             builder.HasKey(c => c.Id);
             builder.Property(x => x.Codigo).HasMaxLength(250).HasColumnType("varchar(250)").IsRequired();
             builder.Property(x => x.Agencia).HasMaxLength(10).HasColumnType("varchar(10)").IsRequired();
-            builder.Property(x => x.ValorTotal).HasColumnType("decimal(9,2)").IsRequired();
-            builder.Property(x => x.DataAberturaContreato).HasColumnType("datetime").IsRequired();
+            builder.Property(x => x.ValorTotal).HasColumnType("decimal(10,2)").IsRequired();
+            builder.Property(x => x.DataAberturaContrato).HasColumnType("datetime").IsRequired();
 
             builder.HasOne(c => c.Cliente).WithMany(p => p.Contratos)
                .HasForeignKey(p => p.ClienteId).OnDelete(DeleteBehavior.NoAction);
-
-            builder.HasOne(c => c.DadosReserva).WithOne(p => p.Contrato)
-                .HasForeignKey<DadosReserva>(p => p.ContratoId).OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(c => c.DadosPagamentos).WithOne(p => p.Contrato)
-                .HasForeignKey<DadosPagamentos>(p => p.ContratoId).OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(c => c.DadosItemContrato).WithOne(p => p.Contrato)
-                .HasForeignKey(p => p.ContratoId).OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(c => c.DadosDevolucao).WithOne(p => p.Contrato)
-                .HasForeignKey<DadosDevolucao>(p => p.ContratoId).OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable("tbContrato");
         }
@@ -51,39 +40,19 @@ namespace LocalizaLab.Operacoes.Infra.Context
             builder.Property(x => x.Diarias).HasColumnType("int").IsRequired();
             builder.Property(x => x.ValorSimulado).HasColumnType("decimal(10,2)").IsRequired();
             builder.Property(x => x.ValorAdicionarGrupo).HasColumnType("decimal(10,2)").IsRequired();
+            builder.Property(x => x.ValorReserva).HasColumnType("decimal(10,2)").IsRequired();
+            builder.Property(x => x.Simulado);
 
             builder.HasOne(c => c.Cliente).WithMany(p => p.Reservas)
                .HasForeignKey(p => p.ClienteId).OnDelete(DeleteBehavior.NoAction);
-
-            builder.HasOne(c => c.Veiculos).WithOne(p => p.Reserva)
-              .HasForeignKey<Reserva>(p => p.VeiculosId).OnDelete(DeleteBehavior.NoAction);
+            
+            builder.HasOne(c => c.Veiculos).WithMany(p => p.Reservas)
+              .HasForeignKey(p => p.VeiculosId).OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable("tbReserva");
         }
     }
-    public class DadosReservaMapping : IEntityTypeConfiguration<DadosReserva>
-    {
-        public void Configure(EntityTypeBuilder<DadosReserva> builder)
-        {
-            builder.HasKey(c => c.Id);
-            builder.Property(x => x.CodigoReserva).HasMaxLength(100).HasColumnType("varchar(100)").IsRequired();
-            builder.Property(x => x.Grupo).HasColumnType("int").IsRequired();
-            builder.Property(x => x.DataInicioReserva).HasColumnType("datetime").IsRequired();
-            builder.Property(x => x.DataFinalReserva).HasColumnType("datetime").IsRequired();
-            builder.Property(x => x.DiariasEmHoras).HasColumnType("int").IsRequired();
-            builder.Property(x => x.Diarias).HasColumnType("int").IsRequired();
-            builder.Property(x => x.ValorReserva).HasColumnType("decimal(10,2)").IsRequired();
-            builder.Property(x => x.ValorPorHora).HasColumnType("decimal(10,2)").IsRequired();
 
-            builder.HasOne(c => c.Contrato).WithOne(p => p.DadosReserva)
-              .HasForeignKey<DadosReserva>(p => p.ContratoId).OnDelete(DeleteBehavior.NoAction);
-
-            builder.HasOne(c => c.Veiculo).WithOne(p => p.DadosReserva)
-                .HasForeignKey<DadosReserva>(p => p.VeiculosId).OnDelete(DeleteBehavior.NoAction);
-
-            builder.ToTable("tbDadosReserva");
-        }
-    }
     public class DadosPagamentosMapping : IEntityTypeConfiguration<DadosPagamentos>
     {
         public void Configure(EntityTypeBuilder<DadosPagamentos> builder)
@@ -100,9 +69,6 @@ namespace LocalizaLab.Operacoes.Infra.Context
             builder.HasOne(c => c.Contrato).WithOne(p => p.DadosPagamentos)
               .HasForeignKey<DadosPagamentos>(p => p.ContratoId).OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasOne(c => c.Pagamento).WithOne(p => p.DadosPagamentos)
-                .HasForeignKey<DadosPagamentos>(p => p.PagamentoId).OnDelete(DeleteBehavior.NoAction);
-
             builder.ToTable("tbDadosPagamento");
         }
     }
@@ -113,6 +79,9 @@ namespace LocalizaLab.Operacoes.Infra.Context
             builder.HasKey(c => c.Id);
             builder.Property(x => x.Item).HasColumnType("int").IsRequired();
             builder.Property(x => x.ValorItem).HasColumnType("decimal(10,2)").IsRequired();
+
+            builder.HasOne(c => c.Contrato).WithMany(p => p.DadosItemContrato)
+               .HasForeignKey(p => p.ContratoId).OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable("tbDadosItemContrato");
         }
@@ -129,6 +98,10 @@ namespace LocalizaLab.Operacoes.Infra.Context
             builder.Property(x => x.CarroLimpo).HasColumnType("bit");
             builder.Property(x => x.PorcentagemTotalAdiconada).HasColumnType("decimal(10,2)").IsRequired();
             builder.Property(x => x.ValorContrato).HasColumnType("decimal(10,2)").IsRequired();
+
+            builder.HasOne(c => c.Contrato).WithOne(p => p.DadosDevolucao)
+                .HasForeignKey<DadosDevolucao>(p => p.ContratoId).OnDelete(DeleteBehavior.Restrict);
+
 
             builder.ToTable("tbDadosDevolucao");
         }
@@ -182,11 +155,33 @@ namespace LocalizaLab.Operacoes.Infra.Context
             builder.Property(x => x.Combustivel).HasColumnType("int").IsRequired();
             builder.Property(x => x.LimitePortaMalas).HasMaxLength(50).HasColumnType("varchar(50)").IsRequired();
             builder.Property(x => x.Categoria).HasColumnType("int").IsRequired();
+            builder.Property(x => x.Reservado);
 
             builder.HasOne(c => c.Modelo).WithMany(p => p.Veiculos)
              .HasForeignKey(p => p.ModeloId).OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable("tbVeiculos");
+        }
+    }
+    public class AgendamentoMapping : IEntityTypeConfiguration<Agendamento>
+    {
+        public void Configure(EntityTypeBuilder<Agendamento> builder)
+        {
+            builder.HasKey(c => c.Id);
+            builder.Property(x => x.CodigoAgencia).HasMaxLength(250).HasColumnType("varchar(250)").IsRequired();
+            builder.Property(x => x.CodigoAgendamento).HasMaxLength(250).HasColumnType("varchar(250)").IsRequired();
+            builder.Property(x => x.ValorFinal).HasColumnType("decimal(10,2)").IsRequired();
+            builder.Property(x => x.ValorAdicionarCategoria).HasColumnType("decimal(10,2)").IsRequired();
+            builder.Property(x => x.DataAgendamento).HasColumnType("datetime").IsRequired();
+            builder.Property(x => x.Diarias).HasColumnType("int").IsRequired();
+
+            builder.HasOne(c => c.Veiculo).WithOne(p => p.Agendamento)
+            .HasForeignKey<Agendamento>(p => p.VeiculoId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(c => c.Clientes).WithMany(p => p.Agendamentos)
+                .HasForeignKey(p => p.ClientesId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.ToTable("Agendamentos");
         }
     }
 

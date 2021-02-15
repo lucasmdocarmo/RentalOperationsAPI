@@ -19,9 +19,9 @@ C:\Users\Lucas Mariano\Source\Repos\LocalizaLabs.Operacoes.BFF\LocalizaLab.Opera
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.deps.json
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.dll
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.pdb
-C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.csprojAssemblyReference.cache
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.AssemblyInfoInputs.cache
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.AssemblyInfo.cs
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.dll
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.pdb
+C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Domain\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.csprojAssemblyReference.cache

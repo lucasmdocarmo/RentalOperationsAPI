@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using LocalizaLab.Operacoes.Domain.Entities;
+using LocalizaLab.Operacoes.Domain.Entities.Carros;
 using LocalizaLab.Operacoes.Domain.Entities.Clientes;
 using LocalizaLab.Operacoes.Domain.Entities.Contratos;
 using LocalizaLab.Operacoes.Domain.Entities.Usuarios;
@@ -19,7 +20,6 @@ namespace LocalizaLab.Operacoes.Infra.Context
         public OperacoesContext(DbContextOptions<OperacoesContext> options) : base(options) { }
         public virtual DbSet<Contrato> Contrato { get; set; }
         public virtual DbSet<Reserva> Reserva { get; set; }
-        public virtual DbSet<DadosReserva> DadosReserva { get; set; }
         public virtual DbSet<DadosPagamentos> DadosPagamentos { get; set; }
         public virtual DbSet<DadosItemContrato> DadosItemContrato { get; set; }
         public virtual DbSet<DadosDevolucao> DadosDevolucao { get; set; }
@@ -30,6 +30,7 @@ namespace LocalizaLab.Operacoes.Infra.Context
         public virtual DbSet<Marca> Marca { get; set; } 
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Operador> Operador { get; set; }
+        public virtual DbSet<Agendamento> Agendamentos { get; set; }
 
         public void Rollback() => base.Database.RollbackTransaction();
         public void Begin() => base.Database.BeginTransaction();

@@ -14,7 +14,7 @@ namespace LocalizaLab.Operacoes.Application.Command.Usuario
         public string Complemento { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-
+        public Guid ClienteId { get; set; }
         public bool Validate()
         {
             return true;

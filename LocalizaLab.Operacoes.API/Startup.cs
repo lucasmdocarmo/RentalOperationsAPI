@@ -2,6 +2,7 @@ using LocalizaLab.Operacoes.API.Extensions;
 using LocalizaLab.Operacoes.Application.Command;
 using LocalizaLab.Operacoes.Application.Command.Autenticacao;
 using LocalizaLab.Operacoes.Application.Command.Carros;
+using LocalizaLab.Operacoes.Application.Command.Carros.Veiculo;
 using LocalizaLab.Operacoes.Application.Command.Contratos;
 using LocalizaLab.Operacoes.Application.Command.Marca;
 using LocalizaLab.Operacoes.Application.Command.Modelos;
@@ -35,8 +36,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace LocalizaLab.Operacoes.API
 {
@@ -108,9 +112,12 @@ namespace LocalizaLab.Operacoes.API
             services.AddScoped<ICommandHandler<EditarVeiculoCommand>, CarrosHandler>();
             services.AddScoped<ICommandHandler<SimularReservaCommand>, ReservaHandler>();
             services.AddScoped<ICommandHandler<CadastrarContratoCommand>, ContratoHandler>();
-            services.AddScoped<ICommandHandler<AgendarReservaCommand>, ReservaHandler>();
+            services.AddScoped<ICommandHandler<DevolverContratoCommand>, ContratoHandler>();
+            services.AddScoped<ICommandHandler<PagarContratoCommand>, ContratoHandler>();
             services.AddScoped<ICommandHandler<CadastrarReservaCommand>, ReservaHandler>();
             services.AddScoped<ICommandHandler<DeletarReservaCommand>, ReservaHandler>();
+            services.AddScoped<ICommandHandler<AgendarVeiculoCommand>, CarrosHandler>();
+            services.AddScoped<ICommandHandler<BaixarContratoCommand>, ContratoHandler>();
 
             //Queries
             services.AddScoped<IQueryResult, QueryResult>();
@@ -126,10 +133,14 @@ namespace LocalizaLab.Operacoes.API
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();
             services.AddScoped<IModeloRepository, ModeloRepository>();
-            services.AddScoped<IPagamentoRepository, PagamentoRespository>();
             services.AddScoped<IReservaRepository, ReservaRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IOperadorRepository, OperadorRepository>();
+            services.AddScoped<IAgendamentosRepository, AgendamentosRepository>();
+            services.AddScoped<IDadosItemContratoRepository, DadosItemContratoRepository>();
+            services.AddScoped<IDadosContratoDevolucaoRepository, DevolucaoContratoRepository>();
+            services.AddScoped<IDadosPagamentosRepository, DadosPagamentoRepository>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, OperacoesContext appContext)
@@ -139,7 +150,14 @@ namespace LocalizaLab.Operacoes.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            if (_unitOfWork.CheckDatabaseStatus()) { appContext.Database.EnsureCreated(); }
+            if (!_unitOfWork.CheckDatabaseStatus())
+            {
+                appContext.Database.EnsureCreated();
+            }
+            else
+            {
+                appContext.Database.Migrate();
+            }
 
             app.UseAuthentication();
             app.UseAuthorization();

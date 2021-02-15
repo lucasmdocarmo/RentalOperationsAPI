@@ -1,5 +1,5 @@
-﻿using LocalizaLab.Operacoes.Domain.Entities.Clientes;
-using LocalizaLab.Operacoes.Domain.Entities.Pagamentos;
+﻿using Flunt.Validations;
+using LocalizaLab.Operacoes.Domain.Entities.Clientes;
 using LocalizaLab.Operacoes.Domain.Extensions;
 using LocalizaLab.Operacoes.Domain.Shared.Entities;
 using LocalizaLab.Operacoes.Domain.ValueObjects.Enums;
@@ -13,24 +13,22 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
     public class Contrato : BaseEntity
     {
         internal Contrato() { }
-        public Contrato(string agencia, Guid clienteId, DadosReserva dadosReserva, DadosPagamentos dadosPagamentos, DadosItemContrato dadosItemContrato)
+        public Contrato(string agencia, Guid clienteId, decimal valorReserva, DateTime dataAberturaContrato)
         {
             Codigo = GenerateCodigo(agencia);
             Agencia = agencia;
             ClienteId = clienteId;
-            DadosReserva = dadosReserva;
-            DadosPagamentos = dadosPagamentos;
-            AdcionarItemContrato(dadosItemContrato);
+            ValorTotal = ObterValorReserva(valorReserva);
+            DataAberturaContrato = dataAberturaContrato;
         }
         public string Codigo { get; private set; }
         public string Agencia { get; private set; }
-        public decimal ValorTotal { set { ObterValorReserva(); } get { return this.ValorTotal; } }
-        public DateTime DataAberturaContreato { get; set; }
+        public decimal ValorTotal { get; set; }
+        public DateTime DataAberturaContrato { get; set; }
 
-        // EF
         public Cliente Cliente { get; private set; }
         public Guid ClienteId { get; private set; }
-        public DadosReserva DadosReserva { get; private set; }
+
         public DadosPagamentos DadosPagamentos { get; private set; }
         public IList<DadosItemContrato> DadosItemContrato { get; private set; }
         public DadosDevolucao DadosDevolucao { get; private set; }
@@ -38,9 +36,9 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
         {
             return OperacoesCodigosGenerator.GenerateCodigoContrato(agencia);
         }
-        public decimal ObterValorReserva()
+        public decimal ObterValorReserva(decimal valor)
         {
-            return DadosReserva.RetornarValorReserva();
+            return ValorTotal = valor;
         }
 
         public void AdcionarItemContrato(DadosItemContrato dadosItemContrato)
@@ -48,63 +46,24 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
             DadosItemContrato.Add(dadosItemContrato);
         }
     }
-    public class DadosReserva : BaseEntity
-    {
-        internal DadosReserva() { }
-
-        public DadosReserva(Guid contratoId, ETipoGrupoReserva grupo, int diarias, Guid veiculosId, DateTime dataInicioReserva, DateTime dataFinalReserva, decimal valorPorHora)
-        {
-            ContratoId = contratoId;
-            Grupo = grupo;
-            Diarias = diarias;
-            VeiculosId = veiculosId;
-            DataInicioReserva = dataInicioReserva;
-            DataFinalReserva = dataFinalReserva;
-            ValorPorHora = valorPorHora;
-            ConvertDiariasToHours(diarias);
-            CalcularValorTotalReserva();
-        }
-        public decimal ValorReserva { get; set; } 
-        public string CodigoReserva { get; set; }
-        public decimal ValorPorHora { get; set; }
-        public int Diarias { get; private set; }
-        public decimal DiariasEmHoras { get; private set; }
-        public DateTime DataInicioReserva { get; private set; }
-        public DateTime DataFinalReserva { get; private set; }
-        public ETipoGrupoReserva Grupo { get; private set; }
-
-        // EF
-        public Guid ContratoId { get; private set; }
-        public Contrato Contrato { get; private set; }
-        public Veiculos Veiculo { get; private set; }
-        public Guid VeiculosId { get; private set; }
-
-        //Domain Rules
-        private void ConvertDiariasToHours(int diarias)
-        {
-            DiariasEmHoras = (decimal)diarias / 24;
-        }
-        private void CalcularValorTotalReserva()
-        {
-            ValorReserva = DiariasEmHoras * ValorPorHora;
-        }
-        public decimal RetornarValorReserva()
-        {
-            return ValorReserva;
-        }
-        public string GenerateCodigoReserva(string agencia)
-        {
-            return OperacoesCodigosGenerator.GenerateCodigoReserva(agencia);
-        }
-    }
     public class DadosPagamentos : BaseEntity
     {
         internal DadosPagamentos() { }
-        public DadosPagamentos(Guid contratoId, decimal valor, DateTime dataPagamento)
+
+        public DadosPagamentos(decimal valor, bool status, string bandeira, string numeroCartao, string dataExpiracao, string cVV, DateTime dataPagamento, Guid contratoId)
         {
-            ContratoId = contratoId;
             Valor = valor;
+            Status = status;
+            Bandeira = bandeira;
+            NumeroCartao = numeroCartao;
+            DataExpiracao = dataExpiracao;
+            CVV = cVV;
             DataPagamento = dataPagamento;
+            ContratoId = contratoId;
+
+            AddNotifications(new Contract()
+               .Requires()
+               .IsLowerOrEqualsThan(0, Valor, "Pagamento.Total", "O total não pode ser zero"));
         }
 
         public decimal Valor { get; private set; }
@@ -118,22 +77,15 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
         //EF
         public Guid ContratoId { get; private set; }
         public Contrato Contrato { get; private set; }
-        public Pagamento Pagamento { get; private set; }
-        public Guid PagamentoId { get; private set; }
-
-        public void AdicionarPagamento(string Bandeira, string NumeroCartao, string DataExpiracao, string CVV, decimal valor, Guid contratoId)
-        {
-            Pagamento.VincularPagamento(Bandeira, NumeroCartao, DataExpiracao, CVV, valor, contratoId);
-        }
     }
     public class DadosItemContrato : BaseEntity
     {
         internal DadosItemContrato() { }
-        public DadosItemContrato(Guid contratoId, ETipoItemReserva item, decimal valorItem)
+        public DadosItemContrato(ETipoItemReserva item, decimal valorItem, Guid contratoId)
         {
-            ContratoId = contratoId;
             Item = item;
             ValorItem = valorItem;
+            ContratoId = contratoId;
         }
 
         public ETipoItemReserva Item { get; private set; }
@@ -142,6 +94,8 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
         public Guid ContratoId { get; private set; }
         public Contrato Contrato { get; private set; }
     }
+
+
     public class DadosDevolucao : BaseEntity
     {
         internal DadosDevolucao() { }
@@ -156,10 +110,10 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
             CalcularValorFinal();
         }
 
-        public bool CarroLimpo { get; private set; } = false;
-        public bool TanqueCheio { get; private set; } = false;
-        public bool Amassado { get; private set; } = false;
-        public bool Arranhado { get; private set; } = false;
+        public bool CarroLimpo { get; private set; }
+        public bool TanqueCheio { get; private set; }
+        public bool Amassado { get; private set; }
+        public bool Arranhado { get; private set; }
         public decimal PorcentagemTotalAdiconada { get; private set; }
         public decimal ValorContrato => CalcularValorFinal();
         private void CalcularDanosGerais()

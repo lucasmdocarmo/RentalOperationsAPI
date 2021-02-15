@@ -17,23 +17,29 @@ using LocalizaLab.Operacoes.Application.Command.Marca;
 using LocalizaLab.Operacoes.Domain.Shared.Repository;
 using LocalizaLab.Operacoes.Application.Presentation;
 using System.Linq;
+using LocalizaLab.Operacoes.Application.Command.Carros.Veiculo;
+using LocalizaLab.Operacoes.Domain.Entities.Carros;
 
 namespace LocalizaLab.Operacoes.Application.Handlers
 {
-    public class CarrosHandler : Notifiable, ICommandHandler<CadastrarVeiculoCommand>, ICommandHandler<CadastrarModeloCommand>,
+    public class CarrosHandler : Notifiable, ICommandHandler<CadastrarVeiculoCommand>, ICommandHandler<CadastrarModeloCommand>, ICommandHandler<AgendarVeiculoCommand>,
                                                        ICommandHandler<CadastrarMarcaCommand>, ICommandHandler<DeletarVeiculoCommand>, ICommandHandler<EditarVeiculoCommand>
     {
         private readonly IVeiculoRepository _veiculoRepository;
         private readonly IMarcaRepository _marcaRepository;
+        private readonly IClienteRepository _clienteRepository;
         private readonly IModeloRepository _modeloRepository;
+        private readonly IAgendamentosRepository _AgendamentoRepository;
         private readonly IMapper _mapper;
 
-        public CarrosHandler(IVeiculoRepository veiculoRepository, IMapper mapper, IMarcaRepository marcaRepository, IModeloRepository modeloRepository)
+        public CarrosHandler(IVeiculoRepository veiculoRepository, IMapper mapper, IMarcaRepository marcaRepository, IModeloRepository modeloRepository, IAgendamentosRepository agendamentoRepository, IClienteRepository clienteRepository)
         {
             _veiculoRepository = veiculoRepository;
             _mapper = mapper;
             _marcaRepository = marcaRepository;
             _modeloRepository = modeloRepository;
+            _AgendamentoRepository = agendamentoRepository;
+            _clienteRepository = clienteRepository;
         }
 
         public async ValueTask<ICommandResult> Handle(CadastrarVeiculoCommand command)
@@ -52,7 +58,6 @@ namespace LocalizaLab.Operacoes.Application.Handlers
 
             if (!result) { return new CommandResult(false); }
 
-            //base.BusinessError("");
             return new CommandResult(true);
         }
         public async ValueTask<ICommandResult> Handle(CadastrarMarcaCommand command)
@@ -78,7 +83,12 @@ namespace LocalizaLab.Operacoes.Application.Handlers
                 AddNotifications(command);
                 return new CommandResult(false, base.Notifications);
             }
-
+            var marcaEntity = await _marcaRepository.GetById(command.MarcaId).ConfigureAwait(true);
+            if(marcaEntity is null)
+            {
+                AddNotification("Marca","Marca Nao Encontrada");
+                return new CommandResult(false, base.Notifications);
+            }
             var entity = new Modelo(command.Nome, command.MarcaId);
 
             await _modeloRepository.Add(entity);
@@ -128,6 +138,44 @@ namespace LocalizaLab.Operacoes.Application.Handlers
             }
             return new CommandResult(false,"Houve um erro ao atualizar os registros.");
         }
+
+        public async ValueTask<ICommandResult> Handle(AgendarVeiculoCommand command)
+        {
+            if (!command.Validate())
+            {
+                AddNotifications(command);
+                return new CommandResult(false, base.Notifications);
+            }
+            var clienteEntity = await _clienteRepository.GetById(command.ClienteId).ConfigureAwait(true);
+            var veiculoEntity = await _veiculoRepository.GetById(command.VeiculoId).ConfigureAwait(true);
+
+            if (clienteEntity == null)
+            {
+                AddNotification("Cliente", "Cliente nao Encontrado.");
+                return new CommandResult(false, base.Notifications);
+            }
+            if (veiculoEntity == null)
+            {
+                AddNotification("Veiculo", "Veiculo Nao Encontrado");
+                return new CommandResult(false, base.Notifications);
+            }
+            var agendamento = new Agendamento(command.CodigoAgencia, command.VeiculoId, command.DataAgendamento, command.ClienteId, command.Diarias);
+            agendamento.GerarValorFinalAgendamento(veiculoEntity.ValorHora, veiculoEntity.Categoria, command.Diarias);
+
+            veiculoEntity.Reservado = true;
+            await _veiculoRepository.Update(veiculoEntity);
+            await _veiculoRepository.SaveChanges().ConfigureAwait(true);
+
+            await _AgendamentoRepository.Add(agendamento);
+            await _AgendamentoRepository.SaveChanges().ConfigureAwait(true);
+
+            var entidadeAgendamento = await _AgendamentoRepository.Search(x => x.VeiculoId == command.VeiculoId && x.ClientesId == command.ClienteId).ConfigureAwait(true);
+            var result = entidadeAgendamento.FirstOrDefault();
+
+            return new CommandResult(true, result);
+
+        }
+
         private async Task<bool> AlterarMarca(EditarMarca marcarEditar)
         {
             var marcaEntity = await _marcaRepository.GetById(marcarEditar.Id).ConfigureAwait(true);

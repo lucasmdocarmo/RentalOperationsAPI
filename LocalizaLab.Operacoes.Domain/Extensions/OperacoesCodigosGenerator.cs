@@ -17,5 +17,10 @@ namespace LocalizaLab.Operacoes.Domain.Extensions
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             return "LOC" + agencia + _random.Next(0, 999999) + _random.Next(0, chars.Length - 1);
         }
+        public static string GenerateCodigoAgendamento(string agencia)
+        {
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return "AG" + agencia + _random.Next(0, 999999) + _random.Next(0, chars.Length - 1);
+        }
     }
 }

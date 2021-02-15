@@ -27,7 +27,8 @@ namespace LocalizaLab.Operacoes.Application.Queries
             {
                 return new QueryResult(true, result);
             }
-            return new QueryResult(false, "Veiculo Nao Encontrado.");
+            AddNotification("Veiculo", "Veiculo nao Encontrado.");
+            return new QueryResult(false,base.Notifications);
         }
 
         public async ValueTask<IQueryResult> Handle(TodosVeiculosQuery command)

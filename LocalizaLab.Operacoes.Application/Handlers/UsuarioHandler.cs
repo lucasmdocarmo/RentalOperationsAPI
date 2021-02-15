@@ -108,7 +108,7 @@ namespace LocalizaLab.Operacoes.Application.Handlers
                 return new CommandResult(false, base.Notifications);
             }
 
-            var entity = new Endereco(command.CEP, command.Logradouro, command.Numero, command.Complemento, command.Cidade, command.Estado, new Guid());
+            var entity = new Endereco(command.CEP, command.Logradouro, command.Numero, command.Complemento, command.Cidade, command.Estado,command.ClienteId);
 
             await _enderecoRepository.Add(entity);
             var result = await _enderecoRepository.SaveChanges().ConfigureAwait(true);

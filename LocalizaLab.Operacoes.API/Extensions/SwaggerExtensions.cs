@@ -2,10 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace LocalizaLab.Operacoes.API.Extensions
@@ -14,6 +18,8 @@ namespace LocalizaLab.Operacoes.API.Extensions
     {
         public static IServiceCollection AddSwaggerConfig(this IServiceCollection services)
         {
+            
+
             services.AddVersionedApiExplorer(options =>
             {
                 options.GroupNameFormat = "'v'VVV";
@@ -52,12 +58,16 @@ namespace LocalizaLab.Operacoes.API.Extensions
                 });
 
                 var apiVersionDescriptionProvider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
+                
 
                 foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions.Where(a => !a.IsDeprecated)
                                             .OrderByDescending(a => a.ApiVersion.MajorVersion).ThenBy(a => a.ApiVersion.MinorVersion))
                 {
                     options.SwaggerDoc(description.GroupName, CreateSwaggerInfoForApiVersion(description));
+
+                   
                 }
+
             });
 
             return services;

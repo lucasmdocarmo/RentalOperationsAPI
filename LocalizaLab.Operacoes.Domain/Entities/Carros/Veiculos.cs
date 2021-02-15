@@ -1,4 +1,5 @@
-﻿using LocalizaLab.Operacoes.Domain.Entities.Contratos;
+﻿using LocalizaLab.Operacoes.Domain.Entities.Carros;
+using LocalizaLab.Operacoes.Domain.Entities.Contratos;
 using LocalizaLab.Operacoes.Domain.Shared.Entities;
 using LocalizaLab.Operacoes.Domain.ValueObjects.Enums;
 using System;
@@ -20,6 +21,7 @@ namespace LocalizaLab.Operacoes.Domain.Entities
             LimitePortaMalas = limitePortaMalas;
             Categoria = categoria;
             ModeloId = modeloId;
+            Reservado = false;
         }
 
         public string Placa { get; private set; }
@@ -28,11 +30,11 @@ namespace LocalizaLab.Operacoes.Domain.Entities
         public ETipoCombustivel Combustivel { get; set; }
         public string LimitePortaMalas { get; set; }
         public ETipoCategoria Categoria { get; set; }
-
+        public bool Reservado { get; set; }
         // EF
         public Guid ModeloId { get; set; }
         public Modelo Modelo { get; set; }
-        public Reserva Reserva { get; set; }
-        public DadosReserva DadosReserva { get; set; }
+        public IReadOnlyCollection<Reserva> Reservas { get; set; }
+        public Agendamento Agendamento { get; set; }
     }
 }

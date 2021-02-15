@@ -6,7 +6,8 @@ using System.Text;
 
 namespace LocalizaLab.Operacoes.Domain.Shared.Repository
 {
-    public interface IContratoRepository : IBaseRepository<Contrato>
-    {
-    }
+    public interface IContratoRepository : IBaseRepository<Contrato> { }
+    public interface IDadosItemContratoRepository : IBaseRepository<DadosItemContrato> { }
+    public interface IDadosContratoDevolucaoRepository : IBaseRepository<DadosDevolucao> { }
+    public interface IDadosPagamentosRepository : IBaseRepository<DadosPagamentos> { }
 }

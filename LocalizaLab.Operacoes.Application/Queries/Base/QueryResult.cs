@@ -9,6 +9,13 @@ namespace LocalizaLab.Operacoes.Application.Queries.Base
     public class QueryResult : IQueryResult
     {
         public QueryResult() { }
+
+        public QueryResult(bool success, IReadOnlyCollection<Notification> messages)
+        {
+            Success = success;
+            Messages = messages;
+        }
+
         public QueryResult(bool success, object result)
         {
             Success = success;
@@ -17,5 +24,6 @@ namespace LocalizaLab.Operacoes.Application.Queries.Base
 
         public bool Success { get; set; }
         public object Result { get; set; }
+        public IReadOnlyCollection<Notification> Messages { get; set; }
     }
 }
