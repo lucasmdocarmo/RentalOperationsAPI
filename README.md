@@ -17,3 +17,11 @@ Projeto desafio para posição de EL
 Projeto possui geração de banco de dados automatico. Atualizar connection string para o seu SQLSERVER.
 "AppOperacoesCatalog": "Server=localhost\\SEU_SQL_SERVER_AQUI;Database=LL_RentalOperacoes;Trusted_Connection=True;MultipleActiveResultSets=true"
 
+#Arquitetura
+Projeto segue arquitetura limpa usando CQRS e command handler para execução das ações(Commands) e Queries para consultas.
+Fail Fast Validations
+Notification Pattern
+Domain Driven Development
+Repository
+Presentation Pattern
+Docker
