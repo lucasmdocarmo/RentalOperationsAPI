@@ -67,7 +67,7 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
                     ValorAdicionarGrupo += 50;
                     break;
             }
-            ValorReserva = Diarias / 24 * ValorAdicionarGrupo / 100;
+            ValorReserva = Diarias / 24 * ValorAdicionarGrupo;
         }
         public void CalcularValorSimulado()
         {
@@ -90,7 +90,7 @@ namespace LocalizaLab.Operacoes.Domain.Entities.Contratos
                     break;
             }
 
-            ValorSimulado = Diarias / 24 * ValorAdicionarGrupo / 100; 
+            ValorSimulado = Diarias / 24 * ValorAdicionarGrupo; 
         }
         public string GenerateCodigoReserva(string agencia)
         {
