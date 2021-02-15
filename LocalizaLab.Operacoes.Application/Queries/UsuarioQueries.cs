@@ -35,7 +35,7 @@ namespace LocalizaLab.Operacoes.Application.Queries
         {
             var usuario = await _usuarioRepository.GetUsuarioByLogin(command.Login, command.Senha);
             if (usuario is null)
-            {
+            { 
                 AddNotification("Usuario/Operador", "Login e/ou Senha Incorreta");
                 return new QueryResult(false, base.Notifications);
             }
