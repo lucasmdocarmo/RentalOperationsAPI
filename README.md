@@ -1,20 +1,19 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Projeto desafio para posição de EL 
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1.	Cadastrar Cliente
+2.	Cadastrar Usuario ou Operador
+3.	Autenticar - Gera Token JWT - Usar no Swagger para Autorizar chamadas subsequentes (Bearer <token>)
+4.	Criar Marca, Modelo e Veiculo
+5.  Criar Reserva ou Agendar Reserva
+6.  Simular Reserva ou Usar Codigo de Reserva para gerar reserva.
+7.  Gerar Contrato
+8.  Devolver Contrato e Pagar Contrato
+9.  Gerar PDF
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Build
+Projeto possui geração de banco de dados automatico. Atualizar connection string para o seu SQLSERVER.
+"AppOperacoesCatalog": "Server=localhost\\SEU_SQL_SERVER_AQUI;Database=LL_RentalOperacoes;Trusted_Connection=True;MultipleActiveResultSets=true"
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
