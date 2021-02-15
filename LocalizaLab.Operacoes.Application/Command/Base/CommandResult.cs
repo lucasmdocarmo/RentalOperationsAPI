@@ -11,7 +11,7 @@ namespace LocalizaLab.Operacoes.Application.Command
 {
     public class CommandResult : ICommandResult
     {
-        public byte[] ResultFile { get; set; }
+      
         public ActionResult ViewModel { get; private set; }
         public CommandResult() { }
         public CommandResult(bool success) 
@@ -33,10 +33,7 @@ namespace LocalizaLab.Operacoes.Application.Command
             Status = status;
             Result = result;
         }
-        public CommandResult(byte[] arquivo)
-        {
-            ResultFile = arquivo;
-        }
+       
 
         private ActionResult ResultAdapter()
         {

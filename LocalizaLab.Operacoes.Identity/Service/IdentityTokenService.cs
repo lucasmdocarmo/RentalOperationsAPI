@@ -11,7 +11,7 @@ namespace LocalizaLab.Operacoes.Identity.Service
 {
     public static class IdentityTokenService
     {
-        public static string GenerateToken(string nome, ETipoPerfil perfil, string secret)
+        public static string GenerateToken(string nome, ETipoPerfil perfil)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e");

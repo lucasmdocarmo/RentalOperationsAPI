@@ -4,6 +4,7 @@ using Flunt.Notifications;
 using LocalizaLab.Operacoes.Application.Queries.Base;
 using LocalizaLab.Operacoes.Application.Queries.Models;
 using LocalizaLab.Operacoes.Application.Queries.Results;
+using LocalizaLab.Operacoes.Application.Queries.Usuarios;
 using LocalizaLab.Operacoes.Domain.Entities.Clientes;
 using LocalizaLab.Operacoes.Domain.Entities.Usuarios;
 using LocalizaLab.Operacoes.Domain.Extensions;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace LocalizaLab.Operacoes.Application.Queries
 {
-    public class UsuarioQueries : Notifiable, IQueryHandler<UsuarioQuery>
+    public class UsuarioQueries : Notifiable, IQueryHandler<UsuarioQuery>,IQueryHandler<ListarUsuarios>
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IClienteRepository _clienteRepository;
@@ -32,29 +33,33 @@ namespace LocalizaLab.Operacoes.Application.Queries
 
         public async ValueTask<IQueryResult> Handle(UsuarioQuery command)
         {
-            var queryResult = new QueryResult();
-
-            var usuario = await _usuarioRepository.GetUsuarioByLogin(command.Login);
-
-            if (usuario != null)
+            var usuario = await _usuarioRepository.GetUsuarioByLogin(command.Login, command.Senha);
+            if (usuario is null)
             {
-                var cliente = await _clienteRepository.GetClienteByCPF(usuario.Login).ConfigureAwait(true);
-
-                var resultado = cliente.ProjectTo<ClienteResult>(_mapper.ConfigurationProvider);
-
-                return new QueryResult(true, resultado);
+                AddNotification("Usuario/Operador", "Login e/ou Senha Incorreta");
+                return new QueryResult(false, base.Notifications);
             }
 
+            var cliente = await _clienteRepository.GetClienteByCPF(usuario.Login).ConfigureAwait(true);
+            if(cliente != null)
+            {
+                var resultado = cliente.ProjectTo<ClienteResult>(_mapper.ConfigurationProvider);
+                return new QueryResult(true, resultado);
+            }
+           
             var operador = await _operadorRepository.GetOperadorByCPF(command.Login);
-
-            if(operador == null)
+            if (operador == null)
             {
                 AddNotification("Usuario/Operador", "Usuario e/ou Operador informados Nao Encontrado.");
                 return new QueryResult(false, base.Notifications);
             }
-            queryResult.Result = operador;
 
             return new QueryResult(true, operador);
+        }
+
+        public async ValueTask<IQueryResult> Handle(ListarUsuarios command)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LocalizaLab.Operacoes.Application.Command;
+using LocalizaLab.Operacoes.Application.Command.Base;
 using LocalizaLab.Operacoes.Application.Command.Contratos;
 using LocalizaLab.Operacoes.Domain.Command.Handlers;
 using Microsoft.AspNetCore.Authorization;
@@ -58,7 +59,7 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
         [Produces("application/pdf")]
         public async Task<IActionResult> DownloadContratoAsync([FromRoute][Required][Bind] Guid id)
         {
-            var result = await _commandBaixar.Handle(new BaixarContratoCommand() { Id = id }).ConfigureAwait(true) as CommandResult;
+            var result = await _commandBaixar.Handle(new BaixarContratoCommand() { Id = id }).ConfigureAwait(true) as CommandFileResult;
 
             return File(result.ResultFile, "application/pdf");
         }

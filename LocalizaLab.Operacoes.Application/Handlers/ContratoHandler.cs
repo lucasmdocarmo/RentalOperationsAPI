@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using LocalizaLab.Operacoes.Application.Command;
+using LocalizaLab.Operacoes.Application.Command.Base;
 using LocalizaLab.Operacoes.Application.Command.Contratos;
 using LocalizaLab.Operacoes.Domain.Command;
 using LocalizaLab.Operacoes.Domain.Command.Handlers;
@@ -155,7 +156,7 @@ namespace LocalizaLab.Operacoes.Application.Handlers
                 stream.Write(bytes, 0, bytes.Length);
             }
 
-            return new CommandResult(bytes);
+            return new CommandFileResult(bytes);
            
 
         }

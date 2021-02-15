@@ -14,10 +14,13 @@ namespace LocalizaLab.Operacoes.Infra.Repositories
     {
         public UsuarioRepository(OperacoesContext db) : base(db) { }
 
-        public async Task<Usuario> GetUsuarioByLogin(string login)
+        public async Task<Usuario> GetUsuarioByLogin(string login, string senha)
         {
-            var result = await base.Search(user => user.Login == login).ConfigureAwait(true);
-
+            var result = await base.Search(user => user.Login == login && user.Senha == senha).ConfigureAwait(true);
+            if(result is null)
+            {
+                return null;
+            }
             return result.FirstOrDefault();
         }
         public async Task CadastrarOperador(Usuario user)

@@ -40,7 +40,7 @@ namespace LocalizaLab.Operacoes.Application.Handlers
                 return new CommandResult(false, base.Notifications);
             }
 
-            var usuarioResult = await _usuarioRepository.GetUsuarioByLogin(command.Login).ConfigureAwait(true);
+            var usuarioResult = await _usuarioRepository.GetUsuarioByLogin(command.Login,command.Senha).ConfigureAwait(true);
             if (usuarioResult == null)
             {
                 var operadorResult = await _operadorRepository.GetOperadorByMatricula(command.Login).ConfigureAwait(true);
@@ -51,7 +51,7 @@ namespace LocalizaLab.Operacoes.Application.Handlers
                 }
                 else
                 {
-                    var token = IdentityTokenService.GenerateToken(operadorResult.Nome, operadorResult.Perfil, "");
+                    var token = IdentityTokenService.GenerateToken(operadorResult.Nome, operadorResult.Perfil);
                     autenticarResult.OperadorResult = new OperadorResult()
                     {
                         Matricula = operadorResult.Matricula,
@@ -64,7 +64,7 @@ namespace LocalizaLab.Operacoes.Application.Handlers
             }
             else
             {
-                var token = IdentityTokenService.GenerateToken(usuarioResult.Nome, usuarioResult.Perfil, "");
+                var token = IdentityTokenService.GenerateToken(usuarioResult.Nome, usuarioResult.Perfil);
                 autenticarResult.UsuarioResult = new UsuarioResult()
                 {
                     CPF = usuarioResult.CPF,
