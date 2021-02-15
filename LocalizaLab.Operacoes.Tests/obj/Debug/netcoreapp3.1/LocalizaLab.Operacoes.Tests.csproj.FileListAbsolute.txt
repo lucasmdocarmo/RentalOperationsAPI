@@ -24,4 +24,3 @@ C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.csproj.CoreCompileInputs.cache
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.dll
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.pdb
-C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.csprojAssemblyReference.cache
