@@ -18,10 +18,14 @@ Projeto possui geração de banco de dados automatico. Atualizar connection stri
 "AppOperacoesCatalog": "Server=localhost\\SEU_SQL_SERVER_AQUI;Database=LL_RentalOperacoes;Trusted_Connection=True;MultipleActiveResultSets=true"
 
 #Arquitetura
-Projeto segue arquitetura limpa usando CQRS e command handler para execução das ações(Commands) e Queries para consultas.
-Fail Fast Validations
-Notification Pattern
-Domain Driven Development
-Repository
-Presentation Pattern
-Docker
+1. Projeto segue arquitetura limpa usando CQRS e command handler para execução das ações(Commands) e Queries para consultas.
+2. Fail Fast Validations
+3. Notification Pattern
+4. Domain Driven Development
+5. Repository
+6. Presentation Pattern
+7. Docker
+8. EF Core, Mappings
+9. AutoMapper
+10. OpenAPI
+11. JWT Bearer Authentication
