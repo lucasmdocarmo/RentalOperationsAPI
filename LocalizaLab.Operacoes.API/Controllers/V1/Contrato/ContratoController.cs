@@ -60,7 +60,7 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
         {
             var result = await _commandBaixar.Handle(new BaixarContratoCommand() { Id = id }).ConfigureAwait(true) as CommandResult;
 
-            return File(System.IO.File.OpenRead("../Files/"), "application/pdf");
+            return File(result.ResultFile, "application/pdf");
         }
 
         [HttpPost]
