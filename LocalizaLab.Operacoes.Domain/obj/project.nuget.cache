@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lD5RTdnZdDZqxCI/+gJeqsfwVb+5l6NLM2YTsmNmSp3ee4fKGO3o86ZXwkSNoXzqHYGoKu18rkwQQyauOyk2Lw==",
+  "dgSpecHash": "Z7BzJ6sq524UB0D6t7b/m+quOzS9UajwX0+llPjCgQzLl4k1QhsWXWB8Q5X85JxPNtO+4CJVxhi0tjOJ/sdfww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas Mariano\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Lucas Mariano\\.nuget\\packages\\flunt\\1.0.5\\flunt.1.0.5.nupkg.sha512",

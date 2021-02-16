@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {}
+    "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {
+    "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj",
         "projectName": "LocalizaLab.Operacoes.Domain",
-        "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj",
+        "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj",
         "packagesPath": "C:\\Users\\Lucas Mariano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas Mariano\\AppData\\Roaming\\NuGet\\NuGet.Config",

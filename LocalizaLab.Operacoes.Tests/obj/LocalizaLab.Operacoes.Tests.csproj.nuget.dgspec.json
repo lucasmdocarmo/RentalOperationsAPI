@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj": {}
+    "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj": {
+    "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj",
         "projectName": "LocalizaLab.Operacoes.Tests",
-        "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj",
+        "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj",
         "packagesPath": "C:\\Users\\Lucas Mariano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Tests\\obj\\",
+        "outputPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas Mariano\\AppData\\Roaming\\NuGet\\NuGet.Config",

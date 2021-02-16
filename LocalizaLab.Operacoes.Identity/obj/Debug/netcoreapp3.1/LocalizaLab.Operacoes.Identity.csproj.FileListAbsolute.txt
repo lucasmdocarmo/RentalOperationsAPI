@@ -34,3 +34,15 @@ C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.csproj.CopyComplete
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.dll
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.pdb
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.deps.json
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.dll
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.pdb
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.dll
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Domain.pdb
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.csprojAssemblyReference.cache
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.AssemblyInfoInputs.cache
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.AssemblyInfo.cs
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.csproj.CopyComplete
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.dll
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Identity\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Identity.pdb

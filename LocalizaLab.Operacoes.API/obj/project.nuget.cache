@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sE4LWidCAjH6EJ3z9Sy4BY3YPPqeOrbLduku88QoF8cfrbUqkFQk9YAJWD8wTl880bEJjLOek7DXz5x4+qTN+w==",
+  "dgSpecHash": "YlUqLikkIhM+xYA5drZw/RpfVFu2QzvMJbgpLIVuxChcPaNPXTN/Mp5m6NA3ongpt0Y8lC7E+aFOjZHry0TshA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.API\\LocalizaLab.Operacoes.API.csproj",
+  "projectFilePath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.API\\LocalizaLab.Operacoes.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas Mariano\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Lucas Mariano\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

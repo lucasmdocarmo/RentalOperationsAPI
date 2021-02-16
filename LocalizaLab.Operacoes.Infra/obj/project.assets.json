@@ -6702,11 +6702,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj",
       "projectName": "LocalizaLab.Operacoes.Infra",
-      "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj",
+      "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj",
       "packagesPath": "C:\\Users\\Lucas Mariano\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Infra\\obj\\",
+      "outputPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Infra\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lucas Mariano\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6723,8 +6723,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {
-              "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj"
+            "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {
+              "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj"
             }
           }
         }

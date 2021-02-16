@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z9GIedAfgs3N+w3Dd0tzKxPmK1pAtsTijFj1QxLwF58yN/+Jq2/86dCDjSpBGOMaFmxzizfiqIL3/vzJ2bssTw==",
+  "dgSpecHash": "q/S+oPuNC5Wu9OoqgUTzW/T4x0iVPdyQkSHQqq+Zb2snTHwmVEViBAsvD5Lo5wSF/PghQSj0K09jBXQIB8fguw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Tests\\LocalizaLab.Operacoes.Tests.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

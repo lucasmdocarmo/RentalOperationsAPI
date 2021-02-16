@@ -7296,11 +7296,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.API\\LocalizaLab.Operacoes.API.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.API\\LocalizaLab.Operacoes.API.csproj",
       "projectName": "LocalizaLab.Operacoes.API",
-      "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.API\\LocalizaLab.Operacoes.API.csproj",
+      "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.API\\LocalizaLab.Operacoes.API.csproj",
       "packagesPath": "C:\\Users\\Lucas Mariano\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.API\\obj\\",
+      "outputPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lucas Mariano\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7317,14 +7317,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Application\\LocalizaLab.Operacoes.Application.csproj": {
-              "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Application\\LocalizaLab.Operacoes.Application.csproj"
+            "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Application\\LocalizaLab.Operacoes.Application.csproj": {
+              "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Application\\LocalizaLab.Operacoes.Application.csproj"
             },
-            "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {
-              "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj"
+            "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj": {
+              "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Domain\\LocalizaLab.Operacoes.Domain.csproj"
             },
-            "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj": {
-              "projectPath": "C:\\Users\\Lucas Mariano\\source\\repos\\Localiza.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj"
+            "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj": {
+              "projectPath": "C:\\Users\\Lucas Mariano\\Source\\Repos\\Rental.Operacoes.API\\LocalizaLab.Operacoes.Infra\\LocalizaLab.Operacoes.Infra.csproj"
             }
           }
         }

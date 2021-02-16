@@ -24,3 +24,12 @@ C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.csproj.CoreCompileInputs.cache
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.dll
 C:\Users\Lucas Mariano\source\repos\Localiza.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.pdb
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.deps.json
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.dll
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\bin\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.pdb
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.csprojAssemblyReference.cache
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.AssemblyInfoInputs.cache
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.AssemblyInfo.cs
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.dll
+C:\Users\Lucas Mariano\Source\Repos\Rental.Operacoes.API\LocalizaLab.Operacoes.Tests\obj\Debug\netcoreapp3.1\LocalizaLab.Operacoes.Tests.pdb
