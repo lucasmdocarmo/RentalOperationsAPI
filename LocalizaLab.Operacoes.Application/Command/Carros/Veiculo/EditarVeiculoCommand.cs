@@ -1,4 +1,5 @@
 ﻿using Flunt.Notifications;
+using Flunt.Validations;
 using LocalizaLab.Operacoes.Domain.Command;
 using LocalizaLab.Operacoes.Domain.ValueObjects.Enums;
 using System;
@@ -20,6 +21,18 @@ namespace LocalizaLab.Operacoes.Application.Command.Carros
        
         public bool Validate()
         {
+            AddNotifications(new Contract()
+             .IsNull(Combustivel, Enum.GetName(typeof(ETipoCombustivel), this.Combustivel).ToString(), "Tipo Combustivel Inválido.")
+             .IsNull(Categoria, Enum.GetName(typeof(ETipoCategoria), this.Categoria).ToString(), "Tipo Combustivel Inválido.")
+             .IsNotNullOrEmpty(Placa, "Plca", "Placa Obrigatorio")
+             .IsNotNullOrEmpty(Ano, "Ano", "Ano Obrigatorio")
+             .IsNotNullOrEmpty(ValorHora, "Valor Hora", "ValorHora Obrigatorio")
+             .IsGreaterThan(Convert.ToInt32(ValorHora), 0, "", "")
+             .IsDigit(ValorHora, "Valor Hora", "Valor deve ser um numero decimal válido")
+             .IsDigit(LimitePortaMalas, "Limite Porta Malas", "Limite Porta Malas deve ser um numero válido")
+             .IsNotNull(Id, "Veiculo", "Veiculo Obrigatório"));
+
+            if (base.Invalid) { return false; }
             return true;
         }
     }

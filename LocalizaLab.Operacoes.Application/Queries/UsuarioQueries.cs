@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Flunt.Notifications;
+using LocalizaLab.Operacoes.Application.Presentation.Results.Operador;
+using LocalizaLab.Operacoes.Application.Presentation.Results.Usuarios;
 using LocalizaLab.Operacoes.Application.Queries.Base;
 using LocalizaLab.Operacoes.Application.Queries.Models;
 using LocalizaLab.Operacoes.Application.Queries.Results;
@@ -17,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace LocalizaLab.Operacoes.Application.Queries
 {
-    public class UsuarioQueries : Notifiable, IQueryHandler<UsuarioQuery>,IQueryHandler<ListarUsuarios>
+    public class UsuarioQueries : Notifiable, IQueryHandler<UsuarioQuery>,IQueryHandler<ListarUsuarios>,IQueryHandler<ListarOperadores>
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IClienteRepository _clienteRepository;
@@ -36,7 +38,7 @@ namespace LocalizaLab.Operacoes.Application.Queries
             var usuario = await _usuarioRepository.GetUsuarioByLogin(command.Login, command.Senha);
             if (usuario is null)
             { 
-                AddNotification("Usuario/Operador", "Login e/ou Senha Incorreta");
+                AddNotification("Usuario/Operador", "Login e/ou Senha Incorreta.");
                 return new QueryResult(false, base.Notifications);
             }
 
@@ -59,7 +61,35 @@ namespace LocalizaLab.Operacoes.Application.Queries
 
         public async ValueTask<IQueryResult> Handle(ListarUsuarios command)
         {
-            throw new NotImplementedException();
+            var usuarios = await _usuarioRepository.GetAll();
+            var list = new ListarUsuariosResult();
+
+            foreach (var item in usuarios)
+            {
+                list.Usuarios.Add(new UsuarioQueryList() 
+                {
+                    Login = item.Login,
+                    Nome = item.Nome
+                });
+            }
+            return new QueryResult(true, list);
+        }
+
+        public async ValueTask<IQueryResult> Handle(ListarOperadores command)
+        {
+            var operadores = await _operadorRepository.GetAll();
+            var list = new ListarOperadoresResult();
+
+            foreach (var item in operadores)
+            {
+                list.Operadores.Add(new OperadoresQueryList()
+                {
+                    Matricula = item.Matricula,
+                    Nome = item.Nome
+                });
+            }
+
+            return new QueryResult(true, list);
         }
     }
 }

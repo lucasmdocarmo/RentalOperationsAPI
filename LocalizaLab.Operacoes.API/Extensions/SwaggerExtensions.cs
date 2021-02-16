@@ -18,8 +18,6 @@ namespace LocalizaLab.Operacoes.API.Extensions
     {
         public static IServiceCollection AddSwaggerConfig(this IServiceCollection services)
         {
-            
-
             services.AddVersionedApiExplorer(options =>
             {
                 options.GroupNameFormat = "'v'VVV";

@@ -1,4 +1,5 @@
 ﻿using Flunt.Notifications;
+using Flunt.Validations;
 using LocalizaLab.Operacoes.Domain.Command;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,10 @@ namespace LocalizaLab.Operacoes.Application.Command.Carros
 
         public bool Validate()
         {
+            AddNotifications(new Contract()
+               .IsNotNull(Id, "Veiculo", "Id Obrigatório"));
+
+            if (base.Invalid) { return false; }
             return true;
         }
     }

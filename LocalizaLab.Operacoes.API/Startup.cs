@@ -15,6 +15,7 @@ using LocalizaLab.Operacoes.Application.Queries.Base;
 using LocalizaLab.Operacoes.Application.Queries.Models;
 using LocalizaLab.Operacoes.Application.Queries.Query;
 using LocalizaLab.Operacoes.Application.Queries.Reservas;
+using LocalizaLab.Operacoes.Application.Queries.Usuarios;
 using LocalizaLab.Operacoes.Application.Queries.Veiculos;
 using LocalizaLab.Operacoes.Domain.Command;
 using LocalizaLab.Operacoes.Domain.Command.Handlers;
@@ -125,6 +126,8 @@ namespace LocalizaLab.Operacoes.API
             services.AddScoped<IQueryHandler<VeiculoQuery>, VeiculoQueries>();
             services.AddScoped<IQueryHandler<TodosVeiculosQuery>, VeiculoQueries>();
             services.AddScoped<IQueryHandler<ConsultarReservaQuery>, ReservaQueries>();
+            services.AddScoped<IQueryHandler<ListarUsuarios>, UsuarioQueries>();
+            services.AddScoped<IQueryHandler<ListarOperadores>, UsuarioQueries>();
 
             //Repos
             services.AddScoped<IVeiculoRepository, VeiculoRepository>();
@@ -154,10 +157,7 @@ namespace LocalizaLab.Operacoes.API
             {
                 appContext.Database.EnsureCreated();
             }
-            else
-            {
-                appContext.Database.Migrate();
-            }
+            else { appContext.Database.Migrate(); }
 
             app.UseAuthentication();
             app.UseAuthorization();

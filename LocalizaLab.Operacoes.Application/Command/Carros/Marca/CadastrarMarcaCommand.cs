@@ -16,9 +16,10 @@ namespace LocalizaLab.Operacoes.Application.Command.Marca
         {
             AddNotifications(new Contract()
                 .IsNotNullOrEmpty(Nome, "CadastrarMarcaCommand.Nome", "Nome Obrigatorio")
-                .IsNotNullOrEmpty(Nome, "CadastrarMarcaCommand.Pais", "Pais Obrigatorio")
+                .IsNotNullOrEmpty(Pais, "CadastrarMarcaCommand.Pais", "Pais Obrigatorio")
             );
 
+            if (base.Invalid) { return false; }
             return true;
         }
 

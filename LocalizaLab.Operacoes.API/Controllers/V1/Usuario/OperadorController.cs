@@ -1,6 +1,9 @@
 ﻿using LocalizaLab.Operacoes.Application.Command;
 using LocalizaLab.Operacoes.Application.Command.Usuario;
+using LocalizaLab.Operacoes.Application.Queries.Base;
+using LocalizaLab.Operacoes.Application.Queries.Usuarios;
 using LocalizaLab.Operacoes.Domain.Command.Handlers;
+using LocalizaLab.Operacoes.Domain.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +22,12 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
     public class OperadorController : ControllerBase
     {
         private readonly ICommandHandler<CadastrarOperadorCommand> _commandOperador;
+        private readonly IQueryHandler<ListarOperadores> _queryOperador;
 
-        public OperadorController(ICommandHandler<CadastrarOperadorCommand> commandOperador)
+        public OperadorController(ICommandHandler<CadastrarOperadorCommand> commandOperador, IQueryHandler<ListarOperadores> queryOperador)
         {
             _commandOperador = commandOperador;
+            _queryOperador = queryOperador;
         }
 
         [HttpPost]
@@ -40,6 +45,21 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
             {
                 return UnprocessableEntity(result.Messages);
             }
+        }
+        [HttpGet]
+        [Route("Listar")]
+        [Authorize(Roles = "Cliente, Operador")]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Listar()
+        {
+            var resultado = await _queryOperador.Handle(new ListarOperadores()).ConfigureAwait(true) as QueryResult;
+            if (resultado is null)
+            {
+                return NotFound(resultado.Messages);
+            }
+            return Ok(resultado);
         }
     }
 }

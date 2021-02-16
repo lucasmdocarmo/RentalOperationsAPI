@@ -3,6 +3,7 @@ using LocalizaLab.Operacoes.Application.Command.Autenticacao;
 using LocalizaLab.Operacoes.Application.Command.Carros;
 using LocalizaLab.Operacoes.Application.Queries.Base;
 using LocalizaLab.Operacoes.Application.Queries.Models;
+using LocalizaLab.Operacoes.Application.Queries.Usuarios;
 using LocalizaLab.Operacoes.Domain.Command.Handlers;
 using LocalizaLab.Operacoes.Domain.Queries;
 using Microsoft.AspNetCore.Authorization;
@@ -34,20 +35,23 @@ namespace LocalizaLab.Operacoes.API.Controllers.V1
         [HttpPost]
         [Route("Login")]
         [Authorize(Roles = "Cliente, Operador")]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
         public async Task<IActionResult> Login([FromBody] UsuarioQuery user)
         {
             var resultado = await _commandQuery.Handle(user).ConfigureAwait(true) as QueryResult;
 
-            return Ok(resultado);
+            return Accepted(resultado);
         }
         [HttpPost]
         [Route("Autenticar")]
         [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
         public async Task<IActionResult> Authenciar([FromBody] AutenticarUsuarioCommand user)
         {
             var resultado = await _commandAutenticar.Handle(user).ConfigureAwait(true) as CommandResult;
 
-            return Ok(resultado);
+            return Accepted(resultado);
         }
     }
 }

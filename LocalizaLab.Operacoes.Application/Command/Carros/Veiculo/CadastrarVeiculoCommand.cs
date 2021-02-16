@@ -34,8 +34,15 @@ namespace LocalizaLab.Operacoes.Application.Command.Carros
         public bool Validate()
         {
             AddNotifications(new Contract()
-                 .IsNotNullOrEmpty(Placa, "CriarVeiculoCommand.Placa","Placa Obrigatorio")
-             );
+             .IsNull(Combustivel, Enum.GetName(typeof(ETipoCombustivel), this.Combustivel).ToString(),"Tipo Combustivel Inválido.")
+             .IsNull(Categoria, Enum.GetName(typeof(ETipoCategoria), this.Categoria).ToString(), "Tipo Combustivel Inválido.")
+             .IsNotNullOrEmpty(Placa, "Plca", "Placa Obrigatorio")
+             .IsNotNullOrEmpty(Ano, "Ano", "Ano Obrigatorio")
+             .IsNotNullOrEmpty(ValorHora, "Valor Hora", "ValorHora Obrigatorio")
+             .IsGreaterThan(Convert.ToInt32(ValorHora),0,"","")
+             .IsDigit(ValorHora,"Valor Hora","Valor deve ser um numero decimal válido")
+             .IsDigit(LimitePortaMalas, "Limite Porta Malas", "Limite Porta Malas deve ser um numero válido")
+             .IsNotNull(ModeloId, "Modelo", "Modelo Obrigatório"));
 
             if (base.Invalid) { return false; }
             return true;

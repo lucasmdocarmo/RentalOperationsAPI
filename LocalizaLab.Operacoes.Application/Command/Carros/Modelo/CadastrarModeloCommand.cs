@@ -1,4 +1,5 @@
 ﻿using Flunt.Notifications;
+using Flunt.Validations;
 using LocalizaLab.Operacoes.Domain.Command;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace LocalizaLab.Operacoes.Application.Command.Modelos
         public Guid MarcaId { get; set; }
         public bool Validate()
         {
+            AddNotifications(new Contract()
+              .IsNotNullOrEmpty(Nome, "Marca.Nome", "Nome Obrigatorio")
+              .IsNotNull(MarcaId, "Marca","Marca Obrigatório"));
+
+            if (base.Invalid) { return false; }
             return true;
         }
     }
