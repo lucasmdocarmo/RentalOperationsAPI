@@ -1,4 +1,5 @@
-﻿using LocalizaLab.Operacoes.Domain.Entities.Carros;
+﻿using Flunt.Validations;
+using LocalizaLab.Operacoes.Domain.Entities.Carros;
 using LocalizaLab.Operacoes.Domain.Entities.Contratos;
 using LocalizaLab.Operacoes.Domain.Shared.Entities;
 using LocalizaLab.Operacoes.Domain.ValueObjects.Enums;
@@ -14,14 +15,27 @@ namespace LocalizaLab.Operacoes.Domain.Entities
         public Veiculos(string placa, string ano, string valorHora, ETipoCombustivel combustivel,
             string limitePortaMalas, ETipoCategoria categoria, Guid modeloId)
         {
-            Placa = placa;
-            Ano = ano;
-            ValorHora = valorHora;
-            Combustivel = combustivel;
-            LimitePortaMalas = limitePortaMalas;
-            Categoria = categoria;
-            ModeloId = modeloId;
-            Reservado = false;
+            AddNotifications(new Contract()
+               .IsNotNullOrEmpty(placa, "Placa", "Nome Obrigatorio.")
+               .IsNotNullOrEmpty(ano, "Ano", "Nome Obrigatorio.")
+               .IsNotNullOrEmpty(valorHora, "Valor", "Nome Obrigatorio.")
+               .IsNotNullOrEmpty(limitePortaMalas, "Limite Porta Malas", "Nome Obrigatorio.")
+               .IsNull(categoria, "Categoria", "Categoria Obrigatorio.")
+               .IsNull(combustivel, "Combustivel", "Combustivel Obrigatorio.")
+               .IsNull(modeloId, "Modelo", "Modelo Obrigatorio"));
+
+            if (Valid)
+            {
+                Placa = placa;
+                Ano = ano;
+                ValorHora = valorHora;
+                Combustivel = combustivel;
+                LimitePortaMalas = limitePortaMalas;
+                Categoria = categoria;
+                ModeloId = modeloId;
+                Reservado = false;
+            }
+          
         }
 
         public string Placa { get; private set; }

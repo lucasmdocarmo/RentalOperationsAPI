@@ -1,4 +1,5 @@
-﻿using LocalizaLab.Operacoes.Domain.Shared.Entities;
+﻿using Flunt.Validations;
+using LocalizaLab.Operacoes.Domain.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,13 +11,18 @@ namespace LocalizaLab.Operacoes.Domain.Entities
         internal Modelo() { }
         public Modelo(string nome, Guid marcaId)
         {
-            Nome = nome;
-            MarcaId = marcaId;
+            AddNotifications(new Contract()
+               .IsNotNullOrEmpty(nome, "Nome", "Nome Obrigatorio.")
+               .IsNull(marcaId, "Marca", "Marca Obrigatorio"));
+
+            if (Valid)
+            {
+                Nome = nome;
+                MarcaId = marcaId;
+            }
         }
 
         public string Nome { get; private set; }
-
-        /* 1:1 */
         public Guid MarcaId { get; set; }
         public Marca Marca { get; set; }
         public IReadOnlyCollection<Veiculos> Veiculos { get; set; }
